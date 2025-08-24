@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Contact — Braille board</title>
+    <style>
+        :root {
+            --bg: #0E0D0D;
+            --panel: #161616;
+            --text: #EDEDED;
+            --muted: #BDBDBD;
+            --accent: #00FF26;
+            --radius: 12px;
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        html,
+        body {
+            margin: 0;
+            background: #000;
+            color: var(--text);
+            font-family: Inter, system-ui, Arial, sans-serif
+        }
+
+        /* ======= Menu (reuse) ======= */
+        .navbar {
+            display: flex;
+            align-items: center;
+            padding: 10px 40px;
+            position: relative;
+            background: #0e0d0d
+        }
+
+        .logo-box {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            background: #00ff00
+        }
+
+        .logo-image {
+            width: 75px;
+            height: 75px;
+            object-fit: contain
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 24px;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            margin: 0;
+            padding: 0
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 24px
+        }
+
+        .nav-links a.active {
+            color: #00ff00
+        }
+
+        /* ======= Hero ======= */
+        .hero-wrap {
+            max-width: 980px;
+            margin: 56px auto 28px;
+            padding: 0 20px;
+            text-align: center
+        }
+
+        .hero-title {
+            font-weight: 800;
+            font-size: clamp(28px, 6vw, 56px);
+            margin: 0 0 14px
+        }
+
+        .hero-sub {
+            color: var(--muted);
+            font-size: 16px;
+            line-height: 1.6;
+            margin: 0 auto;
+            max-width: 760px
+        }
+
+        /* ======= Content grid ======= */
+        .contact-grid {
+            max-width: 1100px;
+            margin: 32px auto 60px;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 28px
+        }
+
+        .left-box {
+            background: #d9d9d9;
+            border-radius: var(--radius);
+            min-height: 420px;
+            display: grid;
+            place-items: center;
+            color: #333;
+        }
+
+        .left-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: var(--radius)
+        }
+
+        .panel {
+            background: var(--panel);
+            border: 1px solid rgba(255, 255, 255, .06);
+            border-radius: var(--radius);
+            padding: 26px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, .35);
+        }
+
+        .panel h3 {
+            margin: 0 0 6px;
+            font-size: 28px;
+            color: var(--accent);
+            text-align: center;
+            font-weight: 800;
+        }
+
+        .panel p.small {
+            margin: 0 0 18px;
+            text-align: center;
+            color: #CFCFCF;
+            font-size: 14px
+        }
+
+        .form-group {
+            margin-bottom: 14px
+        }
+
+        .label {
+            display: block;
+            font-size: 12px;
+            color: #A9A9A9;
+            margin-bottom: 8px
+        }
+
+        .input,
+        .textarea {
+            width: 100%;
+            background: #121212;
+            color: #EAEAEA;
+            border: 1px solid #2a2a2a;
+            border-radius: 10px;
+            padding: 12px 14px;
+            font-size: 14px;
+            outline: none;
+            transition: border-color .2s ease, box-shadow .2s ease;
+        }
+
+        .input:focus,
+        .textarea:focus {
+            border-color: #3a3a3a;
+            box-shadow: 0 0 0 2px rgba(0, 255, 38, .12)
+        }
+
+        .textarea {
+            min-height: 120px;
+            resize: vertical
+        }
+
+        .btn {
+            margin-left: auto;
+            display: inline-grid;
+            place-items: center;
+            padding: 12px 18px;
+            border: none;
+            background: var(--accent);
+            color: #0b0b0b;
+            font-weight: 700;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform .12s ease, filter .2s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-1px);
+            filter: saturate(110%)
+        }
+
+        .row {
+            display: flex;
+            gap: 12px
+        }
+
+        .row>* {
+            flex: 1
+        }
+
+        .note {
+            margin-top: 10px;
+            font-size: 14px;
+            min-height: 20px
+        }
+
+        .note.ok {
+            color: var(--accent)
+        }
+
+        .note.err {
+            color: #ff6868
+        }
+
+        /* ======= Bottom info (inside panel) ======= */
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-top: 24px;
+            color: #D6D6D6
+        }
+
+        .info-grid h4 {
+            margin: 0 0 8px;
+            font-size: 16px;
+            color: #fff
+        }
+
+        .info-grid p {
+            margin: 0 0 8px;
+            font-size: 14px;
+            color: #BEBEBE
+        }
+
+        .info-grid a {
+            color: #EAEAEA;
+            text-decoration: underline
+        }
+
+        /* ======= Footer (reuse) ======= */
+        .footer {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            align-items: center;
+            padding: 36px 60px;
+            background: #0f0f0f;
+            border-top: 1px solid rgba(255, 255, 255, .06)
+        }
+
+        .footer-left h3 {
+            margin: 0 0 8px;
+            font-size: 18px;
+            font-weight: 700
+        }
+
+        .footer-left p {
+            margin: 0;
+            color: #bdbdbd;
+            font-size: 14px
+        }
+
+        .footer-center {
+            text-align: center;
+            font-size: 14px;
+            line-height: 1.5
+        }
+
+        .footer-center a {
+            color: #bdbdbd;
+            text-decoration: underline
+        }
+
+        .footer-right {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 10px
+        }
+
+        .footer-logo {
+            display: block;
+            width: 75px;
+            height: 75px;
+            object-fit: contain
+        }
+
+        @media (max-width: 1000px) {
+            .contact-grid {
+                grid-template-columns: 1fr
+            }
+
+            .left-box {
+                min-height: 260px
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr
+            }
+
+            .footer {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 18px
+            }
+
+            .footer-right {
+                justify-content: center
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ===================== 1) MENU ===================== -->
+    <nav class="navbar">
+        <div class="logo">
+            <span class="logo-box">
+                <img src="media/Braille Board logo .png" alt="Logo" class="logo-image">
+            </span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html" class="active">Braille board</a></li>
+            <li><a href="contact.html">Contact us</a></li>
+        </ul>
+    </nav>
+
+    <!-- ===== HERO ===== -->
+    <header class="hero-wrap">
+        <h1 class="hero-title">Get in touch</h1>
+        <p class="hero-sub">
+            We’d love to hear from you. Fill out the form below and we’ll get back to you as soon as possible.
+        </p>
+    </header>
+
+    <!-- ===== CONTENT ===== -->
+    <main class="contact-grid" aria-label="Contact section">
+        <!-- Left visual / map / video -->
+        <div class="left-box">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d366.60818173537785!2d44.53507424961953!3d40.18665550846169!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sam!4v1756038856920!5m2!1sen!2sam" width="100%"
+                height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+
+        <!-- Right panel with form -->
+        <section class="panel" aria-labelledby="contact-title">
+            <h3 id="contact-title">Contact Us</h3>
+            <p class="small">Have questions or feedback? We’d love to hear from you.</p>
+
+            <form id="contact-form" novalidate>
+                <div class="form-group">
+                    <label class="label" for="name">Full Name</label>
+                    <input class="input" id="name" name="name" type="text" placeholder="Your name" required>
+                </div>
+                <div class="form-group">
+                    <label class="label" for="email">Email Address</label>
+                    <input class="input" id="email" name="email" type="email" placeholder="your.email@example.com"
+                        required>
+                </div>
+                <div class="form-group">
+                    <label class="label" for="msg">Message</label>
+                    <textarea class="textarea" id="msg" name="message" placeholder="Your message here..."
+                        required></textarea>
+                </div>
+
+                <div class="row" style="align-items:center">
+                    <span class="note" id="note" role="status" aria-live="polite"></span>
+                    <button class="btn" type="submit">Send Message</button>
+                </div>
+            </form>
+
+            <div class="info-grid" style="margin-top:28px">
+                <div>
+                    <h4>Our Office</h4>
+                    <p>Armenak armenakyan 125</p>
+                    <p>Yerevan</p>
+                </div>
+                <div>
+                    <h4>Contact Information</h4>
+                    <p>Email: <a href="mailto:fbfcompany4bf@gmail.com">fbfcompany4bf@gmail.com</a></p>
+                    <p>Phone: +37498193977</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="footer-left">
+            <h3>FBF LLC</h3>
+            <p>We try to create the best, just for you.</p>
+        </div>
+
+        <div class="footer-center">
+            <a href="mailto:hi@brailleboard.com">hi@brailleboard.com</a><br>
+            Armenia, Yerevan
+        </div>
+
+        <div class="footer-right">
+            <img class="footer-logo" src="media/Braille Board logo .png" alt="Braille board logo">
+            <span>Braille board</span>
+        </div>
+    </footer>
+
+    <script>
+        // Demo submit (ոչ մի ուղարկում սերվեր)
+        (function () {
+            const form = document.getElementById('contact-form');
+            const note = document.getElementById('note');
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const name = form.name.value.trim();
+                const email = form.email.value.trim();
+                const message = form.message.value.trim();
+                const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+                note.className = 'note';
+                if (!name || !email || !message || !re.test(email)) {
+                    note.textContent = 'Խնդրում ենք լրացնել բոլոր դաշտերը (վավեր email):';
+                    note.classList.add('err');
+                    return;
+                }
+                setTimeout(() => {
+                    note.textContent = 'Շնորհակալություն, ուղարկվել է (դեմո)։ Մենք կկապվենք ձեզ հետ։';
+                    note.classList.add('ok');
+                    form.reset();
+                }, 350);
+            });
+        })();
+    </script>
+</body>
+
+</html>
