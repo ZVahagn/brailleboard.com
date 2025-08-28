@@ -1,0 +1,16 @@
+{
+  "name": "braille-board-website",
+  "version": "1.0.0",
+  "description": "Braille Board - Small portable keyboard for typing in Braille",
+  "main": "index.html",
+  "scripts": {
+    "dev": "python3 -m http.server 3000",
+    "build": "echo 'Build complete - static files ready'",
+    "preview": "python3 -m http.server 4173"
+  },
+  "keywords": ["braille", "keyboard", "accessibility", "assistive-technology"],
+  "author": "FBF LLC",
+  "license": "MIT",
+  "devDependencies": {},
+  "dependencies": {}
+}
