@@ -4,7 +4,7 @@
   "description": "Braille Board - Small portable keyboard for typing in Braille",
   "main": "index.html",
   "scripts": {
-    "dev": "python3 -m http.server 3000",
+    "dev": "http-server . -p 3000 -c-1",
     "build": "echo 'Build complete - static files ready'",
     "preview": "python3 -m http.server 4173"
   },
