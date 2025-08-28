@@ -73,6 +73,25 @@
             color: #00ff00
         }
 
+        /* Focus styles for keyboard navigation */
+        .logo-box:focus,
+        .nav-links a:focus {
+            outline: 2px solid #00ff26;
+            outline-offset: 2px;
+            border-radius: 4px;
+        }
+
+        .logo-box {
+            display: inline-block;
+            border-radius: 8px;
+            transition: transform 0.2s ease;
+        }
+
+        .logo-box:hover,
+        .logo-box:focus {
+            transform: scale(1.05);
+        }
+
         /* ======= Hero ======= */
         .hero-wrap {
             max-width: 980px;
@@ -247,6 +266,26 @@
             text-decoration: underline
         }
 
+        /* Enhanced focus styles for form elements */
+        .input:focus,
+        .textarea:focus {
+            border-color: #00ff26;
+            box-shadow: 0 0 0 2px rgba(0, 255, 38, .25);
+        }
+
+        .btn:focus {
+            outline: 2px solid #00ff26;
+            outline-offset: 2px;
+            transform: translateY(-1px);
+        }
+
+        /* Focus styles for info links */
+        .info-grid a:focus {
+            outline: 2px solid #00ff26;
+            outline-offset: 2px;
+            border-radius: 2px;
+        }
+
         /* ======= Footer (reuse) ======= */
         .footer {
             display: grid;
@@ -283,6 +322,13 @@
         .footer-right {
             display: flex;
             align-items: center;
+
+        /* Focus styles for footer links */
+        .footer-center a:focus {
+            outline: 2px solid #00ff26;
+            outline-offset: 2px;
+            border-radius: 2px;
+        }
             justify-content: flex-end;
             gap: 10px
         }
@@ -325,9 +371,9 @@
     <!-- ===================== 1) MENU ===================== -->
     <nav class="navbar">
         <div class="logo">
-            <span class="logo-box">
+            <a href="index.html" class="logo-box" aria-label="Braille Board Home">
                 <img src="media/Braille Board logo .png" alt="Logo" class="logo-image">
-            </span>
+            </a>
         </div>
         <ul class="nav-links">
             <li><a href="index.html" class="active">Braille board</a></li>
@@ -336,7 +382,7 @@
     </nav>
 
     <!-- ===== HERO ===== -->
-    <header class="hero-wrap">
+    <header class="hero-wrap" id="main-content" role="main">
         <h1 class="hero-title">Get in touch</h1>
         <p class="hero-sub">
             We’d love to hear from you. Fill out the form below and we’ll get back to you as soon as possible.
@@ -361,17 +407,17 @@
             <form id="contact-form" novalidate>
                 <div class="form-group">
                     <label class="label" for="name">Full Name</label>
-                    <input class="input" id="name" name="name" type="text" placeholder="Your name" required>
+                    <input class="input" id="name" name="name" type="text" placeholder="Your name" required aria-describedby="name-error">
                 </div>
                 <div class="form-group">
                     <label class="label" for="email">Email Address</label>
                     <input class="input" id="email" name="email" type="email" placeholder="your.email@example.com"
-                        required>
+                        required aria-describedby="email-error">
                 </div>
                 <div class="form-group">
                     <label class="label" for="msg">Message</label>
                     <textarea class="textarea" id="msg" name="message" placeholder="Your message here..."
-                        required></textarea>
+                        required aria-describedby="message-error"></textarea>
                 </div>
 
                 <div class="row" style="align-items:center">
@@ -413,30 +459,175 @@
         </div>
     </footer>
 
+    <!-- Skip Link -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <style>
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 6px;
+            background: #00ff26;
+            color: #000;
+            padding: 8px;
+            text-decoration: none;
+            border-radius: 4px;
+            z-index: 1000;
+            font-weight: bold;
+            transition: top 0.3s;
+        }
+
+        .skip-link:focus {
+            top: 6px;
+        }
+    </style>
+
     <script>
-        // Demo submit (ոչ մի ուղարկում սերվեր)
+        // Enhanced form validation with keyboard accessibility
         (function () {
             const form = document.getElementById('contact-form');
             const note = document.getElementById('note');
+            
+            // Enhanced form validation with better error handling
             form.addEventListener('submit', (e) => {
                 e.preventDefault();
+                
+                // Clear previous error states
+                clearErrors();
+                
                 const name = form.name.value.trim();
                 const email = form.email.value.trim();
                 const message = form.message.value.trim();
                 const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                
+                let hasErrors = false;
+                let firstErrorField = null;
 
                 note.className = 'note';
-                if (!name || !email || !message || !re.test(email)) {
-                    note.textContent = 'Խնդրում ենք լրացնել բոլոր դաշտերը (վավեր email):';
+                
+                // Validate individual fields
+                if (!name) {
+                    showFieldError('name', 'Name is required');
+                    hasErrors = true;
+                    if (!firstErrorField) firstErrorField = form.name;
+                }
+                
+                if (!email) {
+                    showFieldError('email', 'Email is required');
+                    hasErrors = true;
+                    if (!firstErrorField) firstErrorField = form.email;
+                } else if (!re.test(email)) {
+                    showFieldError('email', 'Please enter a valid email address');
+                    hasErrors = true;
+                    if (!firstErrorField) firstErrorField = form.email;
+                }
+                
+                if (!message) {
+                    showFieldError('message', 'Message is required');
+                    hasErrors = true;
+                    if (!firstErrorField) firstErrorField = form.message;
+                }
+                
+                if (hasErrors) {
+                    note.textContent = 'Please correct the errors above and try again.';
                     note.classList.add('err');
+                    if (firstErrorField) {
+                        firstErrorField.focus();
+                    }
                     return;
                 }
+                
                 setTimeout(() => {
-                    note.textContent = 'Շնորհակալություն, ուղարկվել է (դեմո)։ Մենք կկապվենք ձեզ հետ։';
+                    note.textContent = 'Thank you! Your message has been sent (demo). We will contact you soon.';
                     note.classList.add('ok');
                     form.reset();
+                    // Announce success to screen readers
+                    announceToScreenReader('Message sent successfully');
                 }, 350);
             });
+            
+            function showFieldError(fieldName, message) {
+                const field = form[fieldName];
+                field.setAttribute('aria-invalid', 'true');
+                field.style.borderColor = '#ff6868';
+                
+                // Create or update error message
+                let errorId = fieldName + '-error';
+                let errorElement = document.getElementById(errorId);
+                if (!errorElement) {
+                    errorElement = document.createElement('div');
+                    errorElement.id = errorId;
+                    errorElement.className = 'field-error';
+                    errorElement.style.cssText = 'color: #ff6868; font-size: 12px; margin-top: 4px;';
+                    field.parentNode.appendChild(errorElement);
+                }
+                errorElement.textContent = message;
+            }
+            
+            function clearErrors() {
+                const fields = ['name', 'email', 'message'];
+                fields.forEach(fieldName => {
+                    const field = form[fieldName];
+                    field.removeAttribute('aria-invalid');
+                    field.style.borderColor = '';
+                    
+                    const errorElement = document.getElementById(fieldName + '-error');
+                    if (errorElement) {
+                        errorElement.textContent = '';
+                    }
+                });
+            }
+            
+            // Real-time validation feedback
+            ['name', 'email', 'message'].forEach(fieldName => {
+                const field = form[fieldName];
+                field.addEventListener('blur', () => {
+                    validateField(fieldName);
+                });
+                
+                field.addEventListener('input', () => {
+                    // Clear error state when user starts typing
+                    if (field.hasAttribute('aria-invalid')) {
+                        field.removeAttribute('aria-invalid');
+                        field.style.borderColor = '';
+                        const errorElement = document.getElementById(fieldName + '-error');
+                        if (errorElement) {
+                            errorElement.textContent = '';
+                        }
+                    }
+                });
+            });
+            
+            function validateField(fieldName) {
+                const field = form[fieldName];
+                const value = field.value.trim();
+                
+                if (fieldName === 'email' && value) {
+                    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    if (!re.test(value)) {
+                        showFieldError(fieldName, 'Please enter a valid email address');
+                    }
+                }
+            }
+            
+            function announceToScreenReader(message) {
+                const announcement = document.createElement('div');
+                announcement.setAttribute('aria-live', 'polite');
+                announcement.setAttribute('aria-atomic', 'true');
+                announcement.style.cssText = `
+                    position: absolute;
+                    left: -10000px;
+                    width: 1px;
+                    height: 1px;
+                    overflow: hidden;
+                `;
+                announcement.textContent = message;
+                document.body.appendChild(announcement);
+                
+                setTimeout(() => {
+                    document.body.removeChild(announcement);
+                }, 1000);
+            }
         })();
     </script>
 </body>

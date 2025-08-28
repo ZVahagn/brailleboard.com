@@ -49,9 +49,9 @@
     <!-- ===================== 1) MENU ===================== -->
     <nav class="navbar">
         <div class="logo">
-            <span class="logo-box">
+            <a href="index.html" class="logo-box" aria-label="Braille Board Home">
                 <img src="media/Braille Board logo .png" alt="Logo" class="logo-image">
-            </span>
+            </a>
         </div>
         <ul class="nav-links">
             <li><a href="index.html" class="active">Braille board</a></li>
@@ -95,12 +95,31 @@
         .nav-links a.active {
             color: #00ff00
         }
+
+        /* Focus styles for keyboard navigation */
+        .logo-box:focus,
+        .nav-links a:focus {
+            outline: 2px solid #00ff26;
+            outline-offset: 2px;
+            border-radius: 4px;
+        }
+
+        .logo-box {
+            display: inline-block;
+            border-radius: 8px;
+            transition: transform 0.2s ease;
+        }
+
+        .logo-box:hover,
+        .logo-box:focus {
+            transform: scale(1.05);
+        }
     </style>
     <!-- /MENU -->
 
     <!-- ===================== 2) HERO ===================== -->
     <!-- from hero.html -->
-    <section class="hero" aria-label="Small portable keyboard for typing in Braille">
+    <section class="hero" aria-label="Small portable keyboard for typing in Braille" tabindex="0">
         <div class="hero__video-wrap">
             <video id="heroVideo" class="hero__video" src="media/Hero.mp4" poster="assets/hero-poster.jpg" autoplay
                 muted playsinline preload="auto" tabindex="-1">
@@ -160,6 +179,12 @@
             text-shadow: 0 2px 12px rgba(0, 0, 0, .45)
         }
 
+        /* Focus styles for hero section */
+        .hero:focus {
+            outline: 2px solid #00ff26;
+            outline-offset: -2px;
+        }
+
         @media (max-width:480px) {
             .hero {
                 min-height: 56vh
@@ -187,7 +212,7 @@
 
     <!-- ===================== 3) FEATURE — COMPACT ===================== -->
     <!-- from feature-compact.html -->
-    <section class="feature feature--fit" id="feature-compact" aria-label="Compact and portable">
+    <section class="feature feature--fit" id="feature-compact" aria-label="Compact and portable" tabindex="0">
         <div class="feature__col feature__col--text">
             <div class="feature__text-wrap feature__pad-sm">
                 <!-- Պահպանում ենք \n-երով 3 տողը -->
@@ -202,7 +227,7 @@
 
     <!-- ===================== 4) FEATURE — HOTKEYS ===================== -->
     <!-- from feature-hotkeys.html -->
-    <section class="feature feature--fit" id="feature-compact" aria-label="Compact and portable">
+    <section class="feature feature--fit" id="feature-hotkeys" aria-label="Fast navigation with hotkeys" tabindex="0">
         <div class="feature__col feature__col--media">
             <img class="feature__media" src="media/Screenshot 2025-08-20 000205.png" alt="">
         </div>
@@ -216,7 +241,7 @@
 
     <!-- ===================== 5) FEATURE — ACCESSIBILITY ===================== -->
     <!-- from feature-accessibility.html -->
-    <section class="feature feature--fit" id="feature-compact" aria-label="Compact and portable">
+    <section class="feature feature--fit" id="feature-accessibility" aria-label="Accessible in any language" tabindex="0">
         <div class="feature__col feature__col--text">
             <div class="feature__text-wrap feature__pad-sm">
                 <!-- Պահպանում ենք \n-երով 3 տողը -->
@@ -293,6 +318,12 @@
             object-position: center;
         }
 
+        /* Focus styles for feature sections */
+        .feature:focus {
+            outline: 2px solid #00ff26;
+            outline-offset: -2px;
+        }
+
         @media (max-width: 900px) {
             .feature {
                 grid-template-columns: 1fr;
@@ -359,7 +390,7 @@
 
     <!-- ===================== 6) DIVIDER ===================== -->
     <!-- from divider.html -->
-    <section class="divider full-bleed">
+    <section class="divider full-bleed" aria-label="Scrolling text about freedom and speed" tabindex="0">
         <div class="divider__track">
             <span>We give you freedom to use smartphones without limits, faster than ever.&nbsp;</span>
             <span>We give you freedom to use smartphones without limits, faster than ever.&nbsp;</span>
@@ -400,13 +431,19 @@
                 transform: translateX(-50%)
             }
         }
+
+        /* Focus styles for divider */
+        .divider:focus {
+            outline: 2px solid #00ff26;
+            outline-offset: -2px;
+        }
     </style>
 
     <!-- ===================== 7) DEMO VIDEO ===================== -->
     <!-- embed version to avoid X-Frame-Options -->
-    <section class="video-wrap">
+    <section class="video-wrap" aria-label="Demo video section">
         <div class="video">
-            <iframe src="https://www.youtube-nocookie.com/embed/I_KjqAxO_8E" title="Braille Board — Demo"
+            <iframe src="https://www.youtube-nocookie.com/embed/I_KjqAxO_8E" title="Braille Board — Demo" tabindex="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowfullscreen></iframe>
         </div>
@@ -435,6 +472,12 @@
             width: 100%;
             height: 100%;
             border: 0
+        }
+
+        /* Focus styles for video iframe */
+        .video iframe:focus {
+            outline: 2px solid #00ff26;
+            outline-offset: 2px;
         }
     </style>
 
@@ -527,6 +570,18 @@
             background: #0e0d0d
         }
 
+        /* Focus styles for form elements */
+        .input:focus {
+            outline: 2px solid #00ff26;
+            outline-offset: 2px;
+        }
+
+        .btn:focus {
+            outline: 2px solid #00ff26;
+            outline-offset: 2px;
+            transform: translateX(2px);
+        }
+
         .note {
             font-size: 14px;
             margin-top: 10px;
@@ -617,6 +672,13 @@
         .footer-right {
             display: flex;
             align-items: center;
+
+        /* Focus styles for footer links */
+        .footer-center a:focus {
+            outline: 2px solid #00ff26;
+            outline-offset: 2px;
+            border-radius: 2px;
+        }
             justify-content: flex-end;
             gap: 10px
         }
@@ -641,6 +703,180 @@
         }
     </style>
     <!-- /FOOTER -->
+
+    <!-- Keyboard Navigation Enhancement Script -->
+    <script>
+        (function() {
+            // Skip link functionality
+            function createSkipLink() {
+                const skipLink = document.createElement('a');
+                skipLink.href = '#main-content';
+                skipLink.textContent = 'Skip to main content';
+                skipLink.className = 'skip-link';
+                skipLink.style.cssText = `
+                    position: absolute;
+                    top: -40px;
+                    left: 6px;
+                    background: #00ff26;
+                    color: #000;
+                    padding: 8px;
+                    text-decoration: none;
+                    border-radius: 4px;
+                    z-index: 1000;
+                    font-weight: bold;
+                    transition: top 0.3s;
+                `;
+                
+                skipLink.addEventListener('focus', () => {
+                    skipLink.style.top = '6px';
+                });
+                
+                skipLink.addEventListener('blur', () => {
+                    skipLink.style.top = '-40px';
+                });
+                
+                document.body.insertBefore(skipLink, document.body.firstChild);
+            }
+
+            // Add main content landmark
+            function addMainLandmark() {
+                const heroSection = document.querySelector('.hero');
+                if (heroSection) {
+                    heroSection.id = 'main-content';
+                    heroSection.setAttribute('role', 'main');
+                }
+            }
+
+            // Enhanced keyboard navigation for sections
+            function enhanceKeyboardNavigation() {
+                const focusableSections = document.querySelectorAll('section[tabindex="0"]');
+                
+                focusableSections.forEach((section, index) => {
+                    section.addEventListener('keydown', (e) => {
+                        switch(e.key) {
+                            case 'ArrowDown':
+                            case 'j':
+                                e.preventDefault();
+                                const nextSection = focusableSections[index + 1];
+                                if (nextSection) {
+                                    nextSection.focus();
+                                    nextSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                                }
+                                break;
+                            
+                            case 'ArrowUp':
+                            case 'k':
+                                e.preventDefault();
+                                const prevSection = focusableSections[index - 1];
+                                if (prevSection) {
+                                    prevSection.focus();
+                                    prevSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                                }
+                                break;
+                            
+                            case 'Home':
+                                e.preventDefault();
+                                focusableSections[0].focus();
+                                focusableSections[0].scrollIntoView({ behavior: 'smooth', block: 'start' });
+                                break;
+                            
+                            case 'End':
+                                e.preventDefault();
+                                const lastSection = focusableSections[focusableSections.length - 1];
+                                lastSection.focus();
+                                lastSection.scrollIntoView({ behavior: 'smooth', block: 'end' });
+                                break;
+                        }
+                    });
+                });
+            }
+
+            // Video controls keyboard enhancement
+            function enhanceVideoKeyboard() {
+                const video = document.getElementById('heroVideo');
+                if (video) {
+                    // Make video focusable for keyboard users who want to control it
+                    video.addEventListener('keydown', (e) => {
+                        switch(e.key) {
+                            case ' ':
+                            case 'k':
+                                e.preventDefault();
+                                if (video.paused) {
+                                    video.play();
+                                } else {
+                                    video.pause();
+                                }
+                                break;
+                            case 'm':
+                                e.preventDefault();
+                                video.muted = !video.muted;
+                                break;
+                        }
+                    });
+                }
+            }
+
+            // Focus trap for modal-like content (if needed in future)
+            function createFocusTrap(container) {
+                const focusableElements = container.querySelectorAll(
+                    'a[href], button, textarea, input[type="text"], input[type="radio"], input[type="checkbox"], select, [tabindex]:not([tabindex="-1"])'
+                );
+                
+                const firstElement = focusableElements[0];
+                const lastElement = focusableElements[focusableElements.length - 1];
+                
+                container.addEventListener('keydown', (e) => {
+                    if (e.key === 'Tab') {
+                        if (e.shiftKey) {
+                            if (document.activeElement === firstElement) {
+                                e.preventDefault();
+                                lastElement.focus();
+                            }
+                        } else {
+                            if (document.activeElement === lastElement) {
+                                e.preventDefault();
+                                firstElement.focus();
+                            }
+                        }
+                    }
+                });
+            }
+
+            // Initialize all enhancements
+            document.addEventListener('DOMContentLoaded', () => {
+                createSkipLink();
+                addMainLandmark();
+                enhanceKeyboardNavigation();
+                enhanceVideoKeyboard();
+            });
+
+            // Announce page changes for screen readers
+            function announcePageChange(message) {
+                const announcement = document.createElement('div');
+                announcement.setAttribute('aria-live', 'polite');
+                announcement.setAttribute('aria-atomic', 'true');
+                announcement.style.cssText = `
+                    position: absolute;
+                    left: -10000px;
+                    width: 1px;
+                    height: 1px;
+                    overflow: hidden;
+                `;
+                announcement.textContent = message;
+                document.body.appendChild(announcement);
+                
+                setTimeout(() => {
+                    document.body.removeChild(announcement);
+                }, 1000);
+            }
+
+            // Export for potential use
+            window.brailleBoard = {
+                announcePageChange,
+                createFocusTrap
+            };
+        })();
+    </script>
 
 </body>
 
