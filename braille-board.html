@@ -1,0 +1,1166 @@
+<!DOCTYPE html>
+<!-- Braille Board - Accessible Smartphone Keyboard by For the Bright Future (FBF) -->
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style type="text/css" data-tag-name="trix-editor">
+    trix-editor {
+      display: block;
+    }
+
+    trix-editor:empty::before {
+      content: attr(placeholder);
+      color: graytext;
+      cursor: text;
+      pointer-events: none;
+      white-space: pre-line;
+    }
+
+    trix-editor a[contenteditable=false] {
+      cursor: text;
+    }
+
+    trix-editor img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    trix-editor [data-trix-attachment] figcaption textarea {
+      resize: none;
+    }
+
+    trix-editor [data-trix-attachment] figcaption textarea.trix-autoresize-clone {
+      position: absolute;
+      left: -9999px;
+      max-height: 0px;
+    }
+
+    trix-editor [data-trix-attachment] figcaption[data-trix-placeholder]:empty::before {
+      content: attr(data-trix-placeholder);
+      color: graytext;
+    }
+
+    trix-editor [data-trix-cursor-target] {
+      display: inline-block !important;
+      width: 1px !important;
+      padding: 0 !important;
+      margin: 0 !important;
+      border: none !important;
+    }
+
+    trix-editor [data-trix-cursor-target=left] {
+      vertical-align: top !important;
+      margin-left: -1px !important;
+    }
+
+    trix-editor [data-trix-cursor-target=right] {
+      vertical-align: bottom !important;
+      margin-right: -1px !important;
+    }
+  </style>
+  <style type="text/css" data-tag-name="trix-toolbar">
+    trix-toolbar {
+      display: block;
+    }
+
+    trix-toolbar {
+      white-space: nowrap;
+    }
+
+    trix-toolbar [data-trix-dialog] {
+      display: none;
+    }
+
+    trix-toolbar [data-trix-dialog][data-trix-active] {
+      display: block;
+    }
+
+    trix-toolbar [data-trix-dialog] [data-trix-validate]:invalid {
+      background-color: #ffdddd;
+    }
+  </style>
+  <style type="text/css">
+    .turbo-progress-bar {
+      position: fixed;
+      display: block;
+      top: 0;
+      left: 0;
+      height: 3px;
+      background: #0076ff;
+      z-index: 9999;
+      transition:
+        width 300ms ease-out,
+        opacity 150ms 150ms ease-in;
+      transform: translate3d(0, 0, 0);
+    }
+  </style>
+
+  <title>Braille Board - Accessible Smartphone Keyboard | For the Bright Future</title>
+  <meta name="csp-nonce" content="">
+  <meta name="description"
+    content="Braille Board is a compact, portable keyboard module that magnetically attaches to smartphones, enabling fast and intuitive text input through the Braille alphabet for people with visual impairments.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:creator" content="@ForBrightFuture">
+  <meta name="twitter:image" content="/assets/config-og2-935b0fd0.png">
+  <meta name="twitter:description"
+    content="Braille Board is a compact, portable keyboard module that magnetically attaches to smartphones, enabling fast and intuitive text input through the Braille alphabet for people with visual impairments.">
+  <meta name="og:url" content="https://brailleboard.com">
+  <meta name="og:type" content="website">
+  <meta name="og:title" content="Braille Board - Accessible Smartphone Keyboard | For the Bright Future">
+  <meta name="og:description"
+    content="Braille Board is a compact, portable keyboard module that magnetically attaches to smartphones, enabling fast and intuitive text input through the Braille alphabet for people with visual impairments.">
+  <meta name="og:image" content="/assets/config-og2-935b0fd0.png">
+  <meta name="og:image:alt" content="Braille Board - Accessible Smartphone Keyboard">
+  <meta name="og:locale" content="en_US">
+  <meta name="og:site_name" content="Braille Board - For the Bright Future">
+  <link rel="stylesheet" href="./braille-board-assets/application-0ad37778.css" media="all" data-turbo-track="reload">
+  <script src="./braille-board-assets/application-18bd3932.js.download" data-turbo-track="reload"
+    defer="defer"></script>
+  <link rel="icon" type="image/png" href="https://config.com/assets/favicon-af2d04a1.png">
+  <link rel="icon" type="image/svg+xml" href="https://config.com/assets/favicon-b0555304.svg">
+  <link rel="apple-touch-icon" type="image/x-icon" href="https://config.com/assets/apple-touch-icon-9f31b2ed.png">
+  <link rel="stylesheet" href="./braille-board-assets/application-0ad37778.css" media="all" data-turbo-track="reload">
+  <meta name="viewport" content="initial-scale=1.0">
+</head>
+
+<body style="background-color: #0B0B09;">
+  <!-- HEADER SECTION: Navigation bar with logo and main menu -->
+  <header class="sticky inset-x-0 top-0 z-50 transition-all" style="background-color: #0B0B09;"
+    data-controller="scroll-boundary" data-scroll-boundary-boundary-value="80"
+    data-scroll-boundary-boundary-class="shadow">
+    <nav class="flex items-center justify-between py-4 px-6 md:py-6 md:px-8" aria-label="Global">
+      <div class="flex lg:flex-1">
+        <a href="https://brailleboard.com/#" class="-m-1.5 p-1.5 flex items-center space-x-3">
+          <span class="sr-only">Braille Board</span>
+          <img src="braille-board-assets/Braille Board logo.png" alt="Braille Board Logo" class="h-8 w-auto">
+          <span class="font-bold text-lg text-white">Braille Board</span>
+        </a>
+      </div>
+      <div class="flex lg:flex-1 lg:justify-end space-x-2 text-sm md:text-body sm:space-x-4">
+        <!-- Navigation links removed as requested -->
+      </div>
+    </nav>
+  </header>
+
+  <!-- HERO SECTION: Main banner with headline and call-to-action -->
+  <div class="relative isolate px-6 lg:px-8">
+    <div class="mx-auto max-w-2xl pt-8 md:pt-12 lg:pt-20">
+      <div class="text-center">
+        <h1 class="text-xxl font-bold tracking-tighter text-primary md:text-5xl sm:text-4xl">Accessible Communication
+          for Everyone</h1>
+        <p class="mt-3 md:mt-5 text-lg leading-8 text-secondary">Braille Board is a compact, portable keyboard module
+          that magnetically attaches to your smartphone, enabling fast and intuitive text input through the Braille
+          alphabet for people with visual impairments.</p>
+        <a class="button !rounded-lg !px-4 !py-2 !text-md font-medium mt-6" data-turbo-frame="modal" style="background-color: #00FF26; color: #0B0B09; border: none;"
+          oncontextmenu="return false;" href="https://brailleboard.com/get-started">
+
+          <span>
+            Get started
+          </span>
+
+
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRODUCT SHOWCASE SECTION: Hero video and feature grid -->
+  <section class="pt-6 lg:pt-12 pb-12 lg:pb-24 px-4 md:px-8">
+    <div class="max-w-[1440px] mx-auto w-full pb-6" data-controller="launch-hero-animation">
+      <img class="w-full hidden" data-launch-hero-animation-target="img"
+        src="./braille-board-assets/disassembly animation img.jpg">
+      <video class="w-full" poster="/assets/index/launch-hero-poster-2635a452.jpg"
+        data-launch-hero-animation-target="video" muted="muted" playsinline="playsinline"
+        src="./braille-board-assets/Disassembly animation.mp4" id="showcase-video"></video>
+    </div>
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div>
+        <div class="text-tertiary font-mono">01</div>
+        <div class="text-primary font-semibold text-lg md:text-xxl my-2">Braille Input</div>
+        <p class="text-md leading-8">6 dedicated buttons for fast and intuitive Braille character input, enabling rapid
+          text composition using the standard Braille alphabet.</p>
+      </div>
+      <div>
+        <div class="text-tertiary font-mono">02</div>
+        <div class="text-primary font-semibold text-lg md:text-xxl my-2">Navigation</div>
+        <p class="text-md leading-8">3 dedicated navigation buttons for moving through menus, confirming selections, and
+          creating custom shortcuts for frequent actions.</p>
+      </div>
+      <div>
+        <div class="text-tertiary font-mono">03</div>
+        <div class="text-primary font-semibold text-lg md:text-xxl my-2">MagSafe Attachment</div>
+        <p class="text-md leading-8">Compact, lightweight design that magnetically attaches to your smartphone without
+          requiring bulky external equipment.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES CAROUSEL SECTION: Interactive showcase of key capabilities -->
+  <!-- FCS color -->
+  <section class="px-4 md:px-8 w-full pb-12 lg:pb-24 bg-cover overflow-hidden bg-center desktop-bg"
+    style="background-image: url('braille-board-assets/Background image with baubles.svg');">
+    <div data-controller="carousel"
+      data-carousel-options-value="{&quot;pagination&quot;: {&quot;el&quot;: &quot;.swiper-pagination&quot;, &quot;clickable&quot;: true}, &quot;breakpoints&quot;: {&quot;0&quot;: { &quot;centeredSlides&quot;: &quot;true&quot;, &quot;centeredSlidesBounds&quot;: &quot;false&quot;, &quot;slidesOffsetBefore&quot;: 0, &quot;spaceBetween&quot;: 40 }, &quot;768&quot;: { &quot;slidesOffsetBefore&quot;: 0, &quot;spaceBetween&quot;: 0, &quot;centeredSlides&quot;: &quot;false&quot;, &quot;centeredSlidesBounds&quot;: &quot;false&quot; }}}"
+      class="swiper-container swiper-initialized swiper-horizontal swiper-pointer-events swiper-backface-hidden">
+      <div class="mx-auto max-w-2xl pt-8 pb-4 md:py-16 lg:pt-24 lg:pb-12">
+        <div class="text-center">
+          <h2 class="text-xxl font-bold tracking-tighter text-white md:text-4xl">Revolutionary <span
+              class="inline-block">Accessibility Technology</span></h2>
+          <p class="mt-2 md:mt-4 text-lg leading-8 text-white">First-of-its-kind Braille input system designed
+            specifically for smartphones. Braille Board enables fast, accurate text input and navigation without
+            compromising independence or requiring bulky assistive technology.</p>
+          <div class="flex justify-center space-x-2 my-6">
+            <div
+              class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal">
+              <span class="swiper-pagination-bullet swiper-pagination-bullet-active" tabindex="0" role="button"
+                aria-label="Go to slide 1" aria-current="true"></span><span class="swiper-pagination-bullet"
+                tabindex="0" role="button" aria-label="Go to slide 2"></span><span class="swiper-pagination-bullet"
+                tabindex="0" role="button" aria-label="Go to slide 3"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="relative w-full md:px-10 md:max-w-[1180px] mx-auto swiper-wrapper z-20"
+        id="swiper-wrapper-0cd3ace473bea91e" aria-live="polite">
+        <div class="swiper-slide md:pr-20 swiper-slide-active" role="group" aria-label="1 / 3" style="width: 1833px;">
+          <div class="bg-white rounded-lg shadow-xl aspect-[49/32] md:max-w-[1180px] overflow-hidden">
+            <img src="braille-board-assets/BB in zoom.png" alt="Braille Board in Zoom meeting"
+              class="w-full h-full object-cover">
+          </div>
+        </div>
+        <div class="swiper-slide md:pr-20 swiper-slide-next" role="group" aria-label="2 / 3" style="width: 1833px;">
+          <div class="bg-white rounded-lg shadow-xl aspect-[49/32] md:max-w-[1180px] overflow-hidden">
+            <img src="braille-board-assets/BB in class.png" alt="Braille Board in classroom setting"
+              class="w-full h-full object-cover">
+          </div>
+        </div>
+        <div class="swiper-slide md:pr-20" role="group" aria-label="3 / 3" style="width: 1833px;">
+          <div class="bg-white rounded-lg shadow-xl aspect-[49/32] md:max-w-[1180px] overflow-hidden">
+            <img src="braille-board-assets/BB in kitchen.png" alt="Braille Board in kitchen environment"
+              class="w-full h-full object-cover">
+          </div>
+        </div>
+      </div>
+      <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+    </div>
+    <div
+      class="w-full relative z-10 max-w-7xl mx-auto -mt-10 p-10 pt-20 bg-black rounded-xl flex flex-col space-x-0 space-y-6 items-center lg:flex-row lg:space-y-0 lg:space-x-10">
+      <div class="flex space-x-6">
+        <img src="braille-board-assets/Amalya.jpg" alt="Amalya - Co-creator"
+          class="w-12 h-12 rounded-[15px] object-cover transition-all hover:scale-105">
+        <img src="braille-board-assets/Sipan.jpg" alt="Sipan - Co-creator"
+          class="w-12 h-12 rounded-[15px] object-cover transition-all hover:scale-105">
+        <img src="braille-board-assets/Alla.jpg" alt="Alla - Co-creator"
+          class="w-12 h-12 rounded-[15px] object-cover transition-all hover:scale-105">
+      </div>
+      <p class="grow text-white opacity-50 text-center max-w-2xl lg:text-left">
+        Braille Board works seamlessly with any smartphone that supports MagSafe technology. Simply attach, pair via
+        Bluetooth, and start typing. Compatible with iOS and Android devices, it integrates perfectly with all your
+        favorite accessibility apps and features. Developed together with our Co-creators, this project is built hand in
+        hand with the community. If you would like to become a Co-creator yourself or be among the first to try the
+        device, you can join our alpha test.
+      </p>
+      <a class="button !rounded-lg !px-4 !py-2 !text-md font-medium" data-turbo-frame="modal" style="background-color: #00FF26; color: #0B0B09; border: none;"
+        oncontextmenu="return false;" href="https://brailleboard.com/get-started">
+
+        <span>
+          Join the alpha test
+        </span>
+
+
+      </a>
+    </div>
+  </section>
+  <!-- DEMO VIDEO SECTION: A short story about the importance of time -->
+  <section class="py-14 px-4 md:px-8 w-full lg:py-24">
+    <div class="relative -z-10 mx-auto max-w-7xl bg-black rounded-2xl">
+      <div class="text-center max-w-3xl mx-auto px-4 py-8 md:py-16 lg:pt-24">
+        <h2 class="text-xxl font-bold tracking-tighter text-white md:text-4xl">A short story about the importance of
+          time.</h2>
+        <p class="mt-2 md:mt-4 text-lg leading-8 text-white opacity-50">She's a Braille teacher — precise, dedicated,
+          always helping others. Yet every day feels like a race against time, leaving little space for herself. One
+          decision changed that. With a simple tap, she chose the Braille Board — a keyboard designed for speed and
+          independence. Now, her days flow with ease. Time is precious. Let's save it with the Braille Board.</p>
+      </div>
+      <div class="relative w-full px-4 md:px-12 lg:px-24 pb-8">
+        <div class="relative mx-auto max-w-4xl">
+          <div class="relative w-full" style="padding-bottom: 56.25%; height: 0;">
+            <iframe
+              src="https://www.youtube.com/embed/I_KjqAxO_8E?rel=0&modestbranding=1&fs=1&cc_load_policy=0&iv_load_policy=3&autohide=0&controls=1"
+              title="Braille Board Demo Video" frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen class="absolute top-0 left-0 w-full h-full rounded-lg shadow-2xl">
+            </iframe>
+          </div>
+        </div>
+      </div>
+      <div
+        class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8 px-4 md:px-24 pt-4 md:pt-10 pb-8 md:pb-12">
+        <div>
+          <div class="flex my-2 text-white space-x-2">
+            <div class="flex space-x-1 items-center "> <svg width="20" height="20" fill="none"
+                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="shrink-0 max-w-[inherit]">
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                  d="M3 12.382V7.61805C3 6.86051 3.428 6.16798 4.10557 5.8292L8.65836 3.5528C9.50294 3.13051 10.4971 3.13051 11.3416 3.5528L15.8944 5.8292C16.572 6.16798 17 6.86051 17 7.61805V12.382C17 13.1395 16.572 13.8321 15.8944 14.1708L11.3416 16.4472C10.4971 16.8695 9.50294 16.8695 8.65836 16.4472L4.10557 14.1708C3.428 13.8321 3 13.1395 3 12.382ZM4.55279 6.72362C4.38831 6.80586 4.25324 6.92979 4.15779 7.0789L9.44094 9.72047L9.7764 9.55274L15.4409 6.72048L10.8944 4.44723C10.3314 4.1657 9.66863 4.1657 9.10557 4.44723L4.55279 6.72362ZM15.9983 7.55982L10.2236 10.4472L9.99831 10.5598C9.99943 10.5791 10 10.5985 10 10.618V12.9409L15.7764 10.0527L16 9.94094V7.61805C16 7.59855 15.9994 7.57913 15.9983 7.55982ZM16 11.059L10.2236 13.9472L10 14.059V15.7639C9.69355 15.7639 9.3871 15.6936 9.10557 15.5528V15.5528C9.66863 15.8343 10.3314 15.8343 10.8944 15.5528L15.4472 13.2764C15.786 13.107 16 12.7608 16 12.382V11.059ZM4.55279 13.2764C4.214 13.107 4 12.7608 4 12.382V12.382C4 12.7607 4.214 13.107 4.55279 13.2764Z"
+                  fill="currentColor"></path>
+              </svg>
+
+            </div>
+            <span class="text-md font-semibold">Portable design</span>
+          </div>
+          <p class="text-md leading-7 text-white opacity-50">The Braille Board is designed so you can always carry it
+            with your phone without feeling any extra burden. Whether it's in your pocket or a small bag, you won't even
+            notice you're carrying one more device.</p>
+        </div>
+        <div>
+          <div class="flex my-2 text-white space-x-2">
+            <div class="flex space-x-1 items-center "> <svg width="20" height="20" fill="none"
+                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="shrink-0 max-w-[inherit]">
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                  d="M10.6533 3.2223C11.3821 2.45304 12.6498 3.1969 12.3338 4.20832L11.1488 8.00005L15.3376 8.00005C16.2155 8.00005 16.6673 9.05045 16.0635 9.68779L9.34667 16.7778C8.61791 17.547 7.35017 16.8032 7.66624 15.7918L8.85115 12H4.66243C3.7845 12 3.33269 10.9496 3.93648 10.3123L10.6533 3.2223ZM11.3793 3.91004L4.66243 11H8.85115C9.52579 11 10.0069 11.6544 9.80563 12.2983L8.62072 16.0901L15.3376 9.00005H11.1488C10.4742 9.00005 9.99314 8.34571 10.1944 7.70177L11.3793 3.91004Z"
+                  fill="currentColor"></path>
+              </svg>
+
+            </div>
+            <span class="text-md font-semibold">Battery life</span>
+          </div>
+          <p class="text-md leading-7 text-white opacity-50">To make the device smaller and more convenient, yes, we had
+            to sacrifice a little in battery size and capacity. But thanks to a special standby mode, we managed to make
+            it last a full day. In short, even if you forget to turn it off, it won't waste energy.</p>
+        </div>
+        <div>
+          <div class="flex my-2 text-white space-x-2">
+            <div class="flex space-x-1 items-center "> <svg width="20" height="20" fill="none"
+                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="shrink-0 max-w-[inherit]">
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                  d="M3 7.618V12.3819C3 13.1395 3.428 13.832 4.10557 14.1708L8.65836 16.4472C9.50294 16.8695 10.4971 16.8695 11.3416 16.4472L15.8944 14.1708C16.572 13.832 17 13.1395 17 12.3819V7.618C17 6.86046 16.572 6.16793 15.8944 5.82915L11.3416 3.55276C10.4971 3.13047 9.50294 3.13047 8.65836 3.55276L4.10557 5.82915C3.428 6.16793 3 6.86046 3 7.618ZM4 7.618C4 7.23923 4.214 6.89297 4.55279 6.72358L9.10557 4.44718C9.66863 4.16566 10.3314 4.16566 10.8944 4.44718L15.4472 6.72358C15.786 6.89297 16 7.23923 16 7.618V12.3819C16 12.7607 15.786 13.107 15.4472 13.2764L10.8944 15.5528C10.3314 15.8343 9.66863 15.8343 9.10557 15.5528L4.55279 13.2764C4.214 13.107 4 12.7607 4 12.3819V7.618ZM10 5.99997C9.82338 5.99997 9.6492 6.01145 9.47819 6.03375C9.20437 6.06947 9.01135 6.3204 9.04707 6.59423C9.08279 6.86805 9.33372 7.06107 9.60754 7.02535C9.73577 7.00863 9.86675 6.99997 10 6.99997C10.1333 6.99997 10.2642 7.00863 10.3925 7.02535C10.6663 7.06107 10.9172 6.86805 10.9529 6.59423C10.9886 6.3204 10.7956 6.06947 10.5218 6.03375C10.3508 6.01145 10.1766 5.99997 10 5.99997ZM8.17392 7.61953C8.39288 7.45127 8.43398 7.13737 8.26572 6.91841C8.09745 6.69945 7.78355 6.65835 7.56459 6.82661C7.28767 7.03942 7.03945 7.28764 6.82664 7.56456C6.65838 7.78352 6.69948 8.09742 6.91844 8.26569C7.1374 8.43395 7.4513 8.39285 7.61956 8.17389C7.77941 7.96588 7.96591 7.77938 8.17392 7.61953ZM12.4354 6.82661C12.2164 6.65835 11.9025 6.69945 11.7343 6.91841C11.566 7.13737 11.6071 7.45127 11.8261 7.61953C12.0341 7.77938 12.2206 7.96588 12.3804 8.17389C12.5487 8.39285 12.8626 8.43395 13.0816 8.26569C13.3005 8.09742 13.3416 7.78352 13.1734 7.56456C12.9606 7.28764 12.7123 7.03942 12.4354 6.82661ZM13.9662 9.47816C13.9305 9.20434 13.6796 9.01132 13.4057 9.04704C13.1319 9.08276 12.9389 9.33369 12.9746 9.60751C12.9913 9.73574 13 9.86672 13 9.99997C13 10.1332 12.9913 10.2642 12.9746 10.3924C12.9389 10.6663 13.1319 10.9172 13.4057 10.9529C13.6796 10.9886 13.9305 10.7956 13.9662 10.5218C13.9885 10.3508 14 10.1766 14 9.99997C14 9.82335 13.9885 9.64917 13.9662 9.47816ZM7.02538 9.60751C7.0611 9.33369 6.86808 9.08276 6.59426 9.04704C6.32043 9.01132 6.0695 9.20434 6.03378 9.47817C6.01148 9.64917 6 9.82335 6 9.99997C6 10.1766 6.01148 10.3508 6.03378 10.5218C6.0695 10.7956 6.32043 10.9886 6.59426 10.9529C6.86808 10.9172 7.0611 10.6663 7.02538 10.3924C7.00866 10.2642 7 10.1332 7 9.99997C7 9.86672 7.00866 9.73574 7.02538 9.60751ZM7.61956 11.8261C7.4513 11.6071 7.1374 11.566 6.91844 11.7343C6.69948 11.9025 6.65838 12.2164 6.82664 12.4354C7.03945 12.7123 7.28767 12.9605 7.56459 13.1733C7.78355 13.3416 8.09745 13.3005 8.26572 13.0815C8.43398 12.8626 8.39288 12.5487 8.17392 12.3804C7.96591 12.2206 7.77941 12.0341 7.61956 11.8261ZM13.1734 12.4354C13.3416 12.2164 13.3005 11.9025 13.0816 11.7343C12.8626 11.566 12.5487 11.6071 12.3804 11.8261C12.2206 12.0341 12.0341 12.2206 11.8261 12.3804C11.6071 12.5487 11.566 12.8626 11.7343 13.0815C11.9025 13.3005 12.2164 13.3416 12.4354 13.1733C12.7123 12.9605 12.9606 12.7123 13.1734 12.4354ZM10.5218 13.9662C10.7956 13.9305 10.9886 13.6795 10.9529 13.4057C10.9172 13.1319 10.6663 12.9389 10.3925 12.9746C10.2642 12.9913 10.1333 13 10 13C9.86675 13 9.73577 12.9913 9.60754 12.9746C9.33372 12.9389 9.08279 13.1319 9.04707 13.4057C9.01135 13.6795 9.20437 13.9305 9.4782 13.9662C9.6492 13.9885 9.82338 14 10 14C10.1766 14 10.3508 13.9885 10.5218 13.9662Z"
+                  fill="currentColor"></path>
+              </svg>
+
+            </div>
+            <span class="text-md font-semibold">Automatic software update</span>
+          </div>
+          <p class="text-md leading-7 text-white opacity-50">Through its dedicated app, the keyboard can automatically
+            update its software, making it more user-friendly and universal.</p>
+        </div>
+        <div>
+          <div class="flex my-2 text-white space-x-2">
+            <div class="flex space-x-1 items-center "> <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                xmlns="http://www.w3.org/2000/svg" class="shrink-0 max-w-[inherit]">
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                  d="M3 7.63982V12.4064C3 13.1382 3.39977 13.8117 4.0423 14.1621L8.13835 16.3964C8.97146 16.8508 9.97045 16.8842 10.8321 16.4866L15.8381 14.1761C16.5464 13.8492 17 13.1403 17 12.3602V7.59362C17 6.86174 16.6002 6.1883 15.9577 5.83783L11.8616 3.60362C11.0285 3.1492 10.0296 3.11575 9.16791 3.51343L4.16188 5.8239C3.45358 6.15081 3 6.85972 3 7.63982ZM4 7.63982C4 7.24977 4.22679 6.89532 4.58094 6.73186L9.58697 4.42139C10.1614 4.15627 10.8274 4.17857 11.3828 4.48151L15.4789 6.71573C15.8001 6.89096 16 7.22768 16 7.59362V12.3602C16 12.7502 15.7732 13.1047 15.4191 13.2681L10.413 15.5786C9.8386 15.8437 9.17261 15.8214 8.61721 15.5185L4.52115 13.2843C4.19989 13.109 4 12.7723 4 12.4064V7.63982ZM12.1807 6.51937C12.4462 6.59523 12.6 6.87197 12.5241 7.13749L12.1685 8.38201H12.7C12.9761 8.38201 13.2 8.60586 13.2 8.88201C13.2 9.15815 12.9761 9.38201 12.7 9.38201H11.8828L11.5971 10.382H12.2C12.4761 10.382 12.7 10.6059 12.7 10.882C12.7 11.1582 12.4761 11.382 12.2 11.382H11.3114L10.7988 13.176C10.723 13.4415 10.4462 13.5952 10.1807 13.5194C9.9152 13.4435 9.76145 13.1668 9.83731 12.9012L10.2714 11.382H8.8114L8.29884 13.176C8.22297 13.4415 7.94623 13.5952 7.68071 13.5194C7.4152 13.4435 7.26145 13.1668 7.33731 12.9012L7.77138 11.382H7.19995C6.92381 11.382 6.69995 11.1582 6.69995 10.882C6.69995 10.6059 6.92381 10.382 7.19995 10.382H8.05709L8.34281 9.38201H7.69995C7.42381 9.38201 7.19995 9.15815 7.19995 8.88201C7.19995 8.60586 7.42381 8.38201 7.69995 8.38201H8.62852L9.06259 6.86277C9.13845 6.59725 9.4152 6.44351 9.68071 6.51937C9.94623 6.59523 10.1 6.87197 10.0241 7.13749L9.66854 8.38201H11.1285L11.5626 6.86277C11.6385 6.59725 11.9152 6.4435 12.1807 6.51937ZM10.8428 9.38201L10.5571 10.382H9.09711L9.38282 9.38201H10.8428Z"
+                  fill="currentColor"></path>
+              </svg>
+
+
+            </div>
+            <span class="text-md font-semibold">Special application</span>
+          </div>
+          <p class="text-md leading-7 text-white opacity-50">The Braille Board's special app allows you to add the
+            language you want to the keyboard. More than 100 languages are available. With a dedicated hot key, you can
+            easily switch between multiple languages while using it.</p>
+        </div>
+        <div>
+          <div class="flex my-2 text-white space-x-2">
+            <div class="flex space-x-1 items-center "> <svg width="20" height="20" fill="none"
+                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="shrink-0 max-w-[inherit]">
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                  d="M10 3C6.13401 3 3 6.13401 3 10C3 13.866 6.13401 17 10 17C13.866 17 17 13.866 17 10C17 6.13401 13.866 3 10 3ZM2 10C2 5.58172 5.58172 2 10 2C14.4183 2 18 5.58172 18 10C18 14.4183 14.4183 18 10 18C5.58172 18 2 14.4183 2 10ZM12 10C12 11.1046 11.1046 12 10 12C8.90057 12 8.00834 11.1129 8.00006 10.0154L5.87873 9.48507C5.61083 9.4181 5.44795 9.14663 5.51493 8.87873C5.5819 8.61084 5.85337 8.44795 6.12127 8.51493L8.24221 9.04517C8.58114 8.42254 9.24122 8 10 8C10.2699 8 10.5273 8.05346 10.7622 8.15037L12.6 5.7C12.7657 5.47909 13.0791 5.43431 13.3 5.6C13.5209 5.76569 13.5657 6.07909 13.4 6.3L11.5619 8.75075C11.8361 9.09303 12 9.52737 12 10Z"
+                  fill="currentColor"></path>
+              </svg>
+
+            </div>
+            <span class="text-md font-semibold">Special hot keys</span>
+          </div>
+          <p class="text-md leading-7 text-white opacity-50">You can add your own custom hot keys to quickly open apps,
+            call your loved ones, switch between applications and languages. Hot keys also help you finally avoid those
+            uncomfortable voice message buttons.</p>
+        </div>
+        <div>
+          <div class="flex my-2 text-white space-x-2">
+            <div class="flex space-x-1 items-center "> <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                xmlns="http://www.w3.org/2000/svg" class="shrink-0 max-w-[inherit]">
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                  d="M9.8153 4.3577C10.2367 4.16746 10.7223 4.1822 11.1315 4.39767L12.6629 5.20421C12.9072 5.33289 13.2096 5.23914 13.3382 4.99481C13.4669 4.75048 13.3732 4.4481 13.1288 4.31942L11.5974 3.51288C10.9156 3.15377 10.1062 3.1292 9.40385 3.44627L7.5642 4.27674C7.31252 4.39036 7.20059 4.6865 7.31421 4.93818C7.42783 5.18987 7.72396 5.30179 7.97565 5.18817L9.8153 4.3577ZM6.136 6.01864C6.38769 5.90503 6.49961 5.60889 6.38599 5.3572C6.27238 5.10552 5.97624 4.99359 5.72455 5.10721L3.8849 5.93768C3.34593 6.18099 3.00021 6.71825 3.00208 7.30959L3.00781 9.11674C3.00869 9.39288 3.23326 9.61603 3.5094 9.61515C3.78554 9.61428 4.00868 9.38971 4.00781 9.11357L4.00208 7.30642C4.00145 7.1093 4.11669 6.93022 4.29635 6.84911L6.136 6.01864ZM14.6603 5.12596C14.4159 4.99728 14.1135 5.09103 13.9849 5.33536C13.8562 5.57969 13.9499 5.88207 14.1943 6.01075L15.7257 6.81729C15.8918 6.90479 15.9949 7.07799 15.9926 7.26575L15.9707 9.07408C15.9673 9.3502 16.1885 9.57676 16.4646 9.58011C16.7407 9.58346 16.9673 9.36233 16.9706 9.08621L16.9926 7.27789C16.9994 6.71461 16.6901 6.195 16.1917 5.9325L14.6603 5.12596ZM16.9487 10.8945C16.952 10.6184 16.7309 10.3919 16.4548 10.3885C16.1787 10.3852 15.9521 10.6063 15.9487 10.8824L15.9268 12.6907C15.9245 12.884 15.8109 13.0587 15.6351 13.1392L13.8199 13.9709C13.5689 14.0859 13.4586 14.3826 13.5736 14.6337C13.6886 14.8847 13.9854 14.995 14.2364 14.88L16.0516 14.0483C16.5789 13.8068 16.9197 13.2828 16.9267 12.7029L16.9487 10.8945ZM4.01354 10.9207C4.01266 10.6446 3.7881 10.4214 3.51196 10.4223C3.23582 10.4232 3.01267 10.6478 3.01354 10.9239L3.01928 12.7311C3.02103 13.2845 3.32745 13.7921 3.81642 14.0514L5.34206 14.8606C5.58601 14.99 5.88867 14.8971 6.01806 14.6532C6.14745 14.4092 6.05458 14.1066 5.81063 13.9772L4.28499 13.168C4.12199 13.0816 4.01986 12.9124 4.01927 12.7279L4.01354 10.9207ZM7.33627 14.7864C7.09232 14.657 6.78966 14.7499 6.66027 14.9938C6.53088 15.2378 6.62375 15.5404 6.8677 15.6698L8.39334 16.479C9.08073 16.8436 9.89868 16.8673 10.6061 16.5433L12.4212 15.7116C12.6723 15.5966 12.7826 15.2998 12.6676 15.0488C12.5525 14.7977 12.2558 14.6875 12.0047 14.8025L10.1895 15.6341C9.76511 15.8286 9.27434 15.8143 8.86191 15.5956L7.33627 14.7864ZM13.8319 8.58015C14.0833 8.46589 14.1945 8.16946 14.0802 7.91807C13.9659 7.66668 13.6695 7.55552 13.4181 7.66979L12.0431 8.29479L10.6681 8.91979C10.4167 9.03406 10.3056 9.33048 10.4198 9.58187C10.5341 9.83326 10.8305 9.94442 11.0819 9.83016L12.4569 9.20516L13.8319 8.58015ZM6.36785 7.68789C6.12646 7.55379 5.82205 7.64076 5.68795 7.88215C5.55384 8.12354 5.64081 8.42794 5.8822 8.56205L7.0072 9.18705L8.1322 9.81205C8.3736 9.94616 8.678 9.85919 8.8121 9.61779C8.94621 9.3764 8.85924 9.072 8.61785 8.93789L7.49285 8.31289L6.36785 7.68789ZM10 11.375C10 11.0988 9.77617 10.875 9.50003 10.875C9.22388 10.875 9.00003 11.0988 9.00003 11.375V12.75V14.125C9.00003 14.4011 9.22388 14.625 9.50003 14.625C9.77617 14.625 10 14.4011 10 14.125V12.75V11.375Z"
+                  fill="currentColor"></path>
+              </svg>
+
+
+            </div>
+            <span class="text-md font-semibold">Special hot keys</span>
+          </div>
+          <p class="text-md leading-7 text-white opacity-50">You can add your own custom hot keys to quickly open apps,
+            call your loved ones, switch between applications and languages. Hot keys also help you finally avoid those
+            uncomfortable voice message buttons.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--Futures keywords-->
+  <section class="relative pb-12 lg:pb-28" style="background-color: #0B0B09;">
+    <div class="text-center mx-auto max-w-2xl pt-8 pb-6 md:py-12">
+      <h2 class="text-xxl font-bold tracking-tighter md:text-4xl" style="color: #FFFFFF;">...And Much, <span
+          class="inline-block">Much More.</span></h2>
+    </div>
+    <div class="relative w-full">
+      <div class="overflow-hidden whitespace-nowrap flex flex-row mx-auto py-1">
+        <div class="scrolling-text-container shrink-0 flex space-x-2 animation-duration-124">
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">Braille Board</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">Braille keyboard</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">portable Braille device</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">accessible keyboard</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">Braille input</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">Braille technology</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">assistive device</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">smart Braille keyboard</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">Braille input board</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">compact Braille keyboard</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">portable design</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">lightweight Braille board</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">carry anywhere</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">fits in pocket</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">small Braille keyboard</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">mobile Braille device</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">easy to carry</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">travel-friendly Braille keyboard</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">compact size</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">minimal weight</div>
+        </div>
+      </div>
+
+      <div class="overflow-hidden whitespace-nowrap flex flex-row mx-auto py-1">
+        <div class="scrolling-text-container shrink-0 flex space-x-2 animation-duration-142">
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">Bluetooth Braille keyboard</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">wireless Braille device</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">Bluetooth connection</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">wireless typing</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">connects to iOS</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">connects to Android</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">Bluetooth pairing</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">universal compatibility</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">wireless Braille input</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">seamless smartphone pairing</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">MagSafe compatible</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">magnetic attachment</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">sticks to phone</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">attachable Braille board</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">easy attach and detach</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">secure attachment</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">designed for MagSafe</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">smartphone attachment</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">phone mount</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">always with your phone</div>
+        </div>
+      </div>
+
+      <div class="overflow-hidden whitespace-nowrap flex flex-row mx-auto py-1">
+        <div class="scrolling-text-container shrink-0 flex space-x-2 animation-duration-106">
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">accessibility support</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">works with screen readers</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">accessibility integration</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">VoiceOver compatible</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">TalkBack compatible</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">assistive apps</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">universal accessibility</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">integrates with accessibility features</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">supports accessibility tools</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">enhances accessibility</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">long battery life</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">standby mode</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">energy saving</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">power efficient</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">lasts all day</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">auto standby</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">energy optimization</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">optimized battery</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">saves power</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">efficient battery usage</div>
+        </div>
+      </div>
+
+      <div class="overflow-hidden whitespace-nowrap flex flex-row mx-auto py-1">
+        <div class="scrolling-text-container shrink-0 flex space-x-2 animation-duration-116">
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">automatic software update</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">self-updating device</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">app-based updates</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">smart updates</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">continuous improvement</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">firmware updates</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">seamless updates</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">update via app</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">latest features</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">future proof</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">dedicated Braille app</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">special companion app</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">app integration</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">multi-language support</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">100+ languages</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">language switching</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">custom app features</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">Braille app settings</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">language customization</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">real-time language switch</div>
+        </div>
+      </div>
+
+      <div class="overflow-hidden whitespace-nowrap flex flex-row mx-auto py-1">
+        <div class="scrolling-text-container shrink-0 flex space-x-2 animation-duration-123">
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">custom hot keys</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">app shortcuts</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">fast app switching</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">quick call buttons</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">hot key customization</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">switch between apps</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">shortcut keys</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">language switch hotkey</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">custom actions</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">time saving hotkeys</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">mechanical switches</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">tactile feedback</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">responsive keys</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">ultra-thin switches</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">clicky Braille keys</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">fast key response</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">durable switches</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">mechanical keyboard feel</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">satisfying typing</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">precision keys</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">independence for blind users</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">self-reliance</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">greater autonomy</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">empowering device</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">independent texting</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">independent navigation</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">independent smartphone use</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">personal independence</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">accessible independence</div>
+
+        </div>
+      </div>
+
+      <div class="overflow-hidden whitespace-nowrap flex flex-row mx-auto py-1">
+        <div class="scrolling-text-container shrink-0 flex space-x-2 animation-duration-110">
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">freedom device</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">increase productivity</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">faster typing</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">efficient texting</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">fast navigation</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">time saving</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">boost efficiency</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">work faster</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">productivity tool</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">enhanced workflow</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">smooth experience</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">fast texting</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">quick messaging</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">easy communication</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">stay connected</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">text faster</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">message easily</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">instant messaging support</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">better communication</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">typing made easy</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">chat with Braille board</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">Braille learning tool</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">teaching Braille</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">education support</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">Braille in classrooms</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">student accessibility</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">teaching device</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">education friendly</div>
+
+        </div>
+      </div>
+
+      <div class="overflow-hidden whitespace-nowrap flex flex-row mx-auto py-1">
+        <div class="scrolling-text-container shrink-0 flex space-x-2 animation-duration-120">
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">Braille literacy</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">learning Braille faster</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">school support</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">Braille for work</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">professional productivity</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">accessible office tool</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">business accessibility</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">work efficiently</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">accessible workplace</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">professional communication</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">work tool</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">Braille office device</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">remote work accessibility</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">daily accessibility</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">everyday use</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">life companion</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">accessible living</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">Braille in daily life</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">essential tool</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">daily texting</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">daily device</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">lifestyle device</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">all-day use</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">innovative Braille device</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">cutting edge accessibility</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">modern Braille keyboard</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">new generation Braille board</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">innovation for blind</div>
+
+        </div>
+      </div>
+
+      <div class="overflow-hidden whitespace-nowrap flex flex-row mx-auto py-1">
+        <div class="scrolling-text-container shrink-0 flex space-x-2 animation-duration-111">
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">accessible innovation</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">technology for good</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">assistive tech innovation</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">next-gen Braille</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">future of Braille</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">reduce stress</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">time efficiency</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">ease of use</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">ergonomic typing</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">comfortable design</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">no strain</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">better workflow</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">less effort</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">user comfort</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">stress-free typing</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">modern design</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">minimalist style</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">sleek look</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">elegant design</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">compact build</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">slim profile</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">stylish device</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">user-centered design</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">lightweight body</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">aesthetic design</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">co-creator project</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">community built</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">user feedback design</div>
+
+        </div>
+      </div>
+
+      <div class="overflow-hidden whitespace-nowrap flex flex-row mx-auto py-1">
+        <div class="scrolling-text-container shrink-0 flex space-x-2 animation-duration-130">
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">developed with users</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">alpha test program</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">early access</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">co-creator community</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">inclusive design</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">developed together</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">built for users</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">plug and play</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">simple setup</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">easy to use</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">user-friendly</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">seamless experience</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">works instantly</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">quick start</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">universal device</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">cross platform</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">multi-device compatibility</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">secure device</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">safe for daily use</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">privacy focused</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">child safe device</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">durable design</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">shock resistant</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">scratch resistant</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">long-lasting device</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">safe materials</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">environmentally friendly</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">empower blind users</div>
+
+        </div>
+      </div>
+
+      <div class="overflow-hidden whitespace-nowrap flex flex-row mx-auto py-1">
+        <div class="scrolling-text-container shrink-0 flex space-x-2 animation-duration-134">
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">equal access</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">digital inclusion</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">accessible lifestyle</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">empowering technology</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">greater participation</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">breaking barriers</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">inclusive technology</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">assistive empowerment</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">equal opportunities</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">Braille training tool</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">student support</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">Braille education device</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">accessible exams</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">Braille study aid</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">Braille classroom technology</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">Braille education innovation</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">teacher support tool</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">digital education inclusion</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">learning independence</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">smooth navigation</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">instant response</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">lag-free typing</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">quick performance</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">optimized experience</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">intuitive device</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">user-friendly interface</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">smart control</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">adaptive features</div>
+
+        </div>
+      </div>
+
+      <div class="overflow-hidden whitespace-nowrap flex flex-row mx-auto py-1">
+        <div class="scrolling-text-container shrink-0 flex space-x-2 animation-duration-124">
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">streamlined workflow</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">multi-platform support</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">cross device use</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">tablet compatibility</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">works with laptops</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">desktop integration</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">cloud sync</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">cloud integration</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">sync with phone</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">seamless ecosystem</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">multi-device ecosystem</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">ergonomic shape</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">curved edges</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">matte finish</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">premium feel</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">sleek body</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">compact elegance</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">innovative switches</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">ultra-lightweight</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">pocket sized</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">stylish accessory</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">community innovation</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">co-creation project</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">developed with community</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">user tested</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">inclusive product design</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">community input</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">community driven</div>
+
+        </div>
+      </div>
+
+      <div class="overflow-hidden whitespace-nowrap flex flex-row mx-auto py-1">
+        <div class="scrolling-text-container shrink-0 flex space-x-2 animation-duration-131">
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">built with feedback</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">real-world testing</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">shared innovation</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">remote working tool</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">work from home accessibility</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">professional Braille device</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">job inclusion</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">career accessibility</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">business productivity</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">professional independence</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">office efficiency</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">accessible employment</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">career empowerment</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">shopping assistance</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">accessible travel</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">public transport accessibility</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">navigation aid</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">daily independence</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">on-the-go accessibility</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">mobile accessibility</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">personal assistant device</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">lifestyle independence</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">outdoor use</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">next-level Braille</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">smart Braille innovation</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">breakthrough device</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">future technology</div>
+          <div class="shadow rounded px-3 py-1 text-md text-secondary"
+            style="background-color: #0B0B09; color: #FFFFFF;">Braille evolution</div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+  <!-- CALL TO ACTION SECTION: Final conversion section with product image -->
+  <section class="relative isolate px-8">
+    <div class="mx-auto max-w-5xl py-20 md:py-28">
+      <div class="mx-auto w-full">
+        <img class="w-full max-w-4xl mx-auto" width="878" height="753" decoding="async" loading="lazy"
+          alt="Braille Board device showing the compact design with 9 tactile buttons for Braille input and navigation"
+          src="./braille-board-assets/BB- last part render.jpg">
+      </div>
+      <div class="text-center">
+        <p class="mt-3 md:mt-5 text-lg leading-8 text-secondary">Ready to experience truly accessible smartphone
+          communication? Join the accessibility revolution with Braille Board.</p>
+        <a class="button !rounded-lg !px-4 !py-2 !text-md font-medium mt-6" data-turbo-frame="modal" style="background-color: #00FF26; color: #0B0B09; border: none;"
+          oncontextmenu="return false;" href="https://brailleboard.com/get-started">
+
+          <span>
+            Get started
+          </span>
+
+
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER SECTION: Company information and legal links -->
+  <footer class="px-4 md:px-8 w-full pt-8 pb-12 lg:pt-16 lg:pb-24 bg-black text-white">
+    <div class="mx-auto max-w-7xl flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-2 ">
+      <img src="braille-board-assets/Braille Board logo.png" alt="Braille Board Logo" class="h-7 w-auto">
+      <div class="grow font-medium">Braille board © 2025
+        <span class="opacity-50 font-normal">· Designed with accessibility in mind</span>
+      </div>
+      <div>
+        <a title="Terms" class="text-white" href="https://brailleboard.com/terms">Terms</a>
+        <span class="opacity-50"> · </span>
+        <a class="text-white" href="https://brailleboard.com/privacy">Privacy</a>
+        <span class="opacity-50"> · </span>
+        <a target="_blank" class="text-white" rel="noreferrer noopener"
+          href="https://twitter.com/ForBrightFuture">Twitter</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Scroll-triggered video autoplay functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const video = document.getElementById('showcase-video');
+      
+      if (video) {
+        // Create intersection observer to detect when video enters viewport
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                // Video is in viewport, play it
+                video.play().catch(e => {
+                  console.log('Video autoplay failed:', e);
+                });
+              } else {
+                // Video is out of viewport, pause it
+                video.pause();
+              }
+            });
+          },
+          {
+            // Trigger when 50% of the video is visible
+            threshold: 0.5,
+            // Add some margin to trigger slightly before the video is fully visible
+            rootMargin: '0px 0px -10% 0px'
+          }
+        );
+        
+        // Start observing the video
+        observer.observe(video);
+      }
+    });
+  </script>
+
+</body>
+
+</html>
